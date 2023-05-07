@@ -1,0 +1,70 @@
+@use '../global' as c;
+
+.mobile-menu{
+    min-width: 100vw;
+    min-height: 100vh;
+    display: grid;
+    justify-items: end;
+    gap: 18px;
+    padding: 24px 20px;
+    top: 0;
+    position: fixed;
+    background-color: c.$soft-dark;
+    z-index: 10000;
+    animation: modalAnimation 0.3s ease-in;
+    animation-fill-mode: forwards;
+}
+
+.close-button-container{
+    display: flex;
+    justify-content: end;
+    align-items: start;
+}
+
+.close-button-icon{
+    fill: c.$white;
+}
+
+.close-button{
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+
+.navbar-mobile{
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: end;
+    gap: 24px;
+    list-style: none;
+}
+
+.mobile-buttons-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    gap: 8px;
+    padding: 0 0 40px;
+}
+
+.button-icon{
+    background: none;
+    border: none;
+    text-align: end;
+}
+
+.button-register-mobile{
+    @include c.button;
+
+}
+
+@keyframes modalAnimation{
+    from{
+        transform: translate(50%);
+    }
+    to{
+        transform: translate(0%);
+    }
+}

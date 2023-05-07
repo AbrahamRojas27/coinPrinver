@@ -1,0 +1,28 @@
+@use '../global' as c;
+
+.register{
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+
+.register-form{
+    display: grid;
+    justify-items: center;
+    gap: 16px;
+}
+
+.input-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    gap: 8px;
+}
+
+.register-img{
+    width: 300px;
+    img{
+        width: 100%;
+        object-fit: cover;
+    }
+}

@@ -1,0 +1,64 @@
+@use '../global' as c;
+
+.our-coin{
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items:center ;
+    align-items: center;
+    margin: 72px 0; 
+    padding: 0 16px;
+    background-image: url(https://www.coinpinver.com/Subastaexchange/public/uploads/news/img/bg-our-coin.jpg);
+    background-repeat: no-repeat;
+}
+
+.coin-banner{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.coin-banner-figure{
+    width: 80%;
+}
+
+.coin-banner-img{
+    width: 100%;
+    object-fit: cover;
+}
+
+.our-coin-text-container{
+    display: grid;
+    gap: 14px;
+}
+
+.our-coin-title{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+    color: c.$white;
+}
+
+.our-coin-text{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    color: c.$white;
+}
+
+@media(max-width: 640px){
+    .our-coin{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .our-coin-title{
+        text-align: center;
+    }
+
+    .our-coin-text{
+        text-align: center;
+    }
+}

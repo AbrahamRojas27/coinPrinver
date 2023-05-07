@@ -1,0 +1,12 @@
+@use '../global' as c;
+
+.footer{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    padding: 40px 24px;
+    background-color: c.$soft-dark;
+    z-index: 10000;
+    position: relative;
+}

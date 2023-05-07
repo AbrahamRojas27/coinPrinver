@@ -1,0 +1,29 @@
+@use '../global' as c;
+
+.news-preview{
+    width: 100%;
+}
+
+.news-preview-title{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 24px;
+    text-align: center;
+    color: c.$white;
+    margin: 0 0 24px;
+}
+
+.news-preview-slide-container{
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    overflow-x: auto;
+    overscroll-behavior: auto;
+}
+
+.news-preview-slide{
+    display: flex;
+    gap: 8px;
+    justify-items: center;
+    padding: 0 8px;
+}

@@ -1,0 +1,55 @@
+$primary: #FFC629;
+$secondary: #CD9F25;
+$terteary: #737B82;
+$found: #D9D9D9;
+$white: #ffff;
+$black: #000;
+$soft-dark: #1E1E1E;
+$nav-text: #6C7B7A;
+$soft-yellow: #FFFF5A;
+$bronce: #cd7f32;
+$plata: #8a9597;
+$oro: #f9ff29;
+$dark: #171718;
+$input: #f4f4f4;
+$error: #ff0000;
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@mixin button{
+    padding: 8px 20px;
+    margin: 0 auto;
+    background-color: $primary;
+    border-radius: 20px;
+    border: none;
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: pointer;
+}
+
+@mixin input{
+    width: 200px;
+    border: none;
+    border-radius: 20px;
+    background-color: $input;
+}
+
+@mixin input-label{
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    color: $white;
+}
+
+@mixin error-text{
+    font-family: Arial, Helvetica, sans-serif;
+    color: $error;
+}
+
+
+.hidden{
+    display: none;
+}

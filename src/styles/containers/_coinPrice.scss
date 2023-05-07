@@ -1,0 +1,51 @@
+@use '../global' as c;
+
+.coin-price-container{
+    width: 100%;
+    overflow: hidden;
+}
+
+.coin-price-slide{
+    display: flex;
+    gap: 20px;
+    padding: 8px;
+    animation: coin-slide 60s linear infinite alternate-reverse;
+}
+
+.coin-price-card{
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-width: 100px;
+}
+
+.coin-price-title{
+    width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: c.$white;
+    text-align: center;
+}
+
+.coin-name{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 14pxpx;
+}
+
+.coin-price-price{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    color: c.$white;
+    text-align: center;
+}
+
+@keyframes coin-slide{
+    from{
+        transform: translateX(0px);
+    }
+    to{
+        transform: translateX(calc(-50 * 100px));
+    }
+}

@@ -1,0 +1,138 @@
+@use '../global' as c;
+
+.news-container{
+    width: 100%;
+    display: grid;
+    grid-column: 2;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    justify-items: center;
+    padding: 20px;
+}
+
+.new-card-container{
+    text-decoration: none;
+}
+
+.new-card{
+    min-width: 280px;
+    max-width: 300px;
+    height: 360px;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    background-color: c.$white;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.new-card-img-figure{
+    width: 100%;
+    overflow: hidden;
+}
+
+.new-card-img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.new-card-text-container{
+    display: grid;
+    padding: 16px 8px;
+}
+
+.new-card-title{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    color: c.$dark;
+    text-decoration: none;
+    outline: none;
+}
+
+.new-card-description{
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+
+}
+
+.new-card-author-container{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 8px;
+
+    figure{
+        width: 40px;
+        height: 40px;
+        border-radius: 100%;
+        overflow: hidden;
+        background-color: c.$dark;
+    }
+    img{
+        width: 90%;
+        object-fit: cover;
+    }
+    p{
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        text-decoration: none;
+        color: c.$dark;
+    }
+}
+
+.user-panel{
+    width: 200px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    padding: 80px 16px 0;
+    gap: 8px;
+    background-color: c.$white;
+    position: fixed;
+}
+
+.user-panel-figure{
+    width: 100px;
+    border-radius: 100%;
+    overflow: hidden;
+}
+
+.user-panel-img{
+    width: 100%;
+    object-fit: cover;
+}
+
+.user-panel-username{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+}
+
+@media (max-width: 640px){
+    .news-container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .user-panel{
+        display: none;
+    }
+    .new-card{
+        min-width: 360px;
+    }
+}
+
+@media (max-width: 768px){
+    .news-container{
+        grid-template-columns: 1fr 1fr;
+    }
+    .user-panel{
+        display: none;
+    }
+}
