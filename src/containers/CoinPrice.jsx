@@ -19,7 +19,7 @@ function CoinPrice(){
     return(
             <section className='coin-price-container'>
                 <article className='coin-price-slide'>
-                    {/* {
+                    { {
                         items.map(item =>(
                             <CoinPriceCard 
                             coin={item.name}
@@ -27,7 +27,7 @@ function CoinPrice(){
                             coinPrice={`$${item.current_price}`}
                             />
                         ))
-                    } */}
+                    } }
                 </article>
             </section>
     )
