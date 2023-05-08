@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 function MembershipPlata(props){
     const navigate = useNavigate();
     return(
-        <div className='membership'>
+        <div className='membership plata'>
             <MemberPlataImg />
             <h3 className='membership-title'>MEMBRESIA PLATA</h3>
             

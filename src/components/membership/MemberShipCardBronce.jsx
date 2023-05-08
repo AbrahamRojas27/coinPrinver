@@ -7,7 +7,7 @@ function MembershipBronce(){
     const navigate = useNavigate()
 
     return(
-        <div className='membership'>
+        <div className='membership bronce'>
             <MemberBronceImg />
             <h3 className='membership-title'>MEMBRESIA BRONCE</h3>
             <ul className='membership-list'>
