@@ -29,6 +29,12 @@ function Header(){
 
     const closeUserModal = () => setUserModal(!userModal)
 
+    const logout = () => {
+        localStorage.removeItem('user')
+        props.dispatch(setUser(null))
+        props.setUserModal(false)
+    }
+
     return(
          <header className={header}>
             <Logo />

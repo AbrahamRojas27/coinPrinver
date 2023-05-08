@@ -151,6 +151,33 @@
     .header-button-login{
         display: none;
     }
+    .user-modal{
+        display: none;
+    }
+    .perfil-button{
+        display: none;
+    }
+}
+
+@media (max-width: 768px){
+    .header-navbar{
+        display: none;
+    }
+    .header-button-dark{
+        display: none;
+    }
+    .header-mobile-menu-button{
+        display: block;
+    }
+    .header-button-login{
+        display: none;
+    }
+    .user-modal{
+        display: none;
+    }
+    .perfil-button{
+        display: none;
+    }
 }
 
 

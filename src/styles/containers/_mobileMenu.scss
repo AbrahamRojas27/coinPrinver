@@ -4,9 +4,9 @@
     min-width: 100vw;
     min-height: 100vh;
     display: grid;
-    justify-items: end;
+    justify-items: start;
     gap: 18px;
-    padding: 24px 20px;
+    padding: 24px 8px;
     top: 0;
     position: fixed;
     background-color: c.$soft-dark;
@@ -16,9 +16,11 @@
 }
 
 .close-button-container{
+    width: 100%;
     display: flex;
     justify-content: end;
     align-items: start;
+    padding: 0 12px;
 }
 
 .close-button-icon{

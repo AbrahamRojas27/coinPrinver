@@ -6,6 +6,7 @@ import { NavbarMobile } from '../components/header/NavbarMobile'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { setOpenModal } from '../actions'
+import { setUser } from '../actions'
 
 
 function MobileMenu(){
@@ -16,6 +17,18 @@ function MobileMenu(){
   const dispatch = useDispatch()
   const closeModal = () => dispatch(setOpenModal(false))
   const modal = openModal ? 'mobile-menu' : 'hidden'
+  const user = JSON.parse(localStorage.getItem('user'))
+
+  const logout = () => {
+      localStorage.removeItem('user')
+      props.dispatch(setUser(null))
+      props.setUserModal(false)
+  }
+
+  const image = user ? user.imagen : ''
+  const name = user ? user.nombre : ''
+  const userImg = user ? '' : 'hidden'
+
   return(
     <section className={modal}>
         <div className='close-button-container'>
@@ -23,15 +36,27 @@ function MobileMenu(){
             <CloseModalBtn/>
           </button>
         </div>
+
+        <div className={userImg}>
+            <figure className="user-modal-img">
+                <img src={image} alt="user image" />
+            </figure>
+            <p className="user-modal-username">{name}</p>
+        </div>
         
         <NavbarMobile/>
 
+        
         <div className='mobile-buttons-container'>
             <button className='hidden'>
                 <SunIcon />
                 <MoonIcon/>
             </button>
-            <button className='button-register-mobile' onClick={toRegister}>Registrame</button>
+            {
+              user 
+                ? <button className="logout-button" onClick={logout}>Cerrar session</button>
+                : <button className='button-register-mobile' onClick={toRegister}>Registrame</button>
+            }
         </div>
     </section>
     )
