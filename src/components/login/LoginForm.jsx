@@ -63,7 +63,7 @@ function LoginForm(){
                 <button className='login-button' onClick={handleInputSubmit}>Entrar</button>
             </form>
 
-            <a href='https://coinpinver.com/Subastaexchange/scsecurity' className='login-button-register'>Crear cuenta</a>
+            <a href='https://coinpinver.com/Subastaexchange/register#tab1' className='login-button-register'>Crear cuenta</a>
        </section>
 
     )
