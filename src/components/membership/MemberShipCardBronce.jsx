@@ -30,7 +30,7 @@ function MembershipBronce(){
                     <p className='membership-text'>{'Invitación a proyectos estables y solidos defi, airdrops, tokens, icos, metaverso, blockchain.(se compartiran solo proyectos sólidos y reales de investigación profunda para poder compartir buenas oportunidades).'}</p>
                 </li>
             </ul>
-                <button onClick={() => navigate('/login')}  className='button'>Adquiere esta membresía</button>
+                <a href='https://coinpinver.com/Subastaexchange/scsecurity'  className='button'>Adquiere esta membresía</a>
         </div>
     )
 }

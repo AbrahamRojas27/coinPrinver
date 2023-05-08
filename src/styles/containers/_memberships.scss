@@ -149,6 +149,8 @@
 
 .button{
     @include c.button;
+    text-decoration: none;
+    color: c.$dark;
 }
 
 @media (max-width: 640px){

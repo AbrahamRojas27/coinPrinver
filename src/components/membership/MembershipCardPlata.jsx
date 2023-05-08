@@ -31,7 +31,7 @@ function MembershipPlata(props){
                 </li>
             </ul>
 
-            <button onClick={() => navigate('/login')}  className='button'>Adquiere esta membresía</button>
+            <a href='https://coinpinver.com/Subastaexchange/scsecurity'  className='button'>Adquiere esta membresía</a>
         </div>
     )
 }
