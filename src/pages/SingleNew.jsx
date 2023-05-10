@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { SingleNewInfo } from '../components/news/SingleNewInfo';
+import { MobileMenu } from '../containers/MobileMenu';
 import fetchApi from '../api';
 
 const SINGLE_NEW = 'https://coinpinver.com/Subastaexchange/api/noticia/'
@@ -16,6 +17,7 @@ function SingleNew(){
     const { singleNew } = useLoaderData()
     return(
                 <div className='single-new'>
+                    <MobileMenu/>
                     <SingleNewInfo 
                     title={singleNew[0].nne_titulo}
                     author={singleNew[0].Nombre}

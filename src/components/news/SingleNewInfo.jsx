@@ -5,8 +5,9 @@ import { useNavigate } from 'react-router-dom'
 function SingleNewInfo(props){
     const navigate = useNavigate()
     const toMemberships = () => navigate('/memberships')
-    const user = useSelector((state) => state.user)
+    const user = JSON.parse(localStorage.getItem('user'))
     const newPremium = user ? user.membresia ? 'single-new-premium-content' : 'hidden' : 'hidden'
+    console.log(user)
     return(
         <section>
             <div className='single-new-header'>
