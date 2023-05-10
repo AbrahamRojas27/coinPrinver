@@ -45,9 +45,14 @@ function LoginForm(){
        <section className='login-form-container' >
                 <LoginFormImg />
 
-            <article className='form-error-text-container'>
-                <p className='hidden'>Usuario o contraseña invalidos.</p>
-            </article>
+            {
+                error
+                    ?   <article className='form-error-text-container'>
+                            <p className='error-text'>Usuario o contraseña invalidos.</p>
+                        </article>
+                        
+                    : <div className='hidden'></div>
+            }
 
             <form onSubmit={handleInputSubmit} className='login-form'>
                 <div className='login-input-container'>
