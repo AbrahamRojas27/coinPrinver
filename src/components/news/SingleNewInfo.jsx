@@ -7,7 +7,6 @@ function SingleNewInfo(props){
     const toMemberships = () => navigate('/memberships')
     const user = JSON.parse(localStorage.getItem('user'))
     const newPremium = user ? user.membresia ? 'single-new-premium-content' : 'hidden' : 'hidden'
-    console.log(user)
     return(
         <section>
             <div className='single-new-header'>

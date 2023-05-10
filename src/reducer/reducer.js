@@ -3,7 +3,6 @@ import { SET_ERROR, SET_LOADING, SET_NEWS, SET_OPEN_MODAL, SET_USER } from "../a
 const initialState = {
     dark: false,
     user: null,
-    news: [],
     loading: false,
     error: false,
     modal: false,

@@ -1,31 +1,49 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NewsContainer } from '../containers/NewsContainers';
 import { UserPanelNews } from '../containers/UserPanelNews';
 import { MobileMenu } from '../containers/MobileMenu';
-import { useSelector } from 'react-redux';
-import { LoadingSkeleton } from '../components/news/LoadingSkeleton';
+import { useSelector, useDispatch } from 'react-redux';
+import { setLoading } from '../actions';
+import getAPI from '../api'
+
+const api = 'https://coinpinver.com/Subastaexchange/api/getNoticiaNewStructure'
 
 function News(){
     const loading = useSelector(state => state.loading)
 
-    useEffect(() => {
-        if(localStorage.getItem('username')){
-            const userLocalStrage = {
-                nombre: localStorage.getItem('username'),
-                membresia: localStorage.getItem('membership'),
-                imagen: localStorage.getItem('userImagen'),
-                jwt: localStorage.getItem('userKey'),
+    const [search, setSearch] = useState("")
+
+    const [news, setNews] = useState([]) 
+    const dispatch = useDispatch()
+    let newsData
+
+    useEffect(() =>{
+        if(search.length === 0){
+            const fetchNews = async () =>{
+                dispatch(setLoading(true))
+                const news = await getAPI(api)
+                newsData = news.data
+                setNews(news.data)
+                dispatch(setLoading(false))
             }
-            info.setUser(userLocalStrage)
-        } 
-    }, [])
+            fetchNews()
+        }
+    }, [search])
 
     return(
             <div className='news'>
                 <MobileMenu />
                 <section className='news-content'>
-                    <UserPanelNews />
-                    <NewsContainer/> 
+                    <UserPanelNews 
+                        news = {news}
+                        setNews = {setNews}
+                        search = {search}
+                        setSearch = {setSearch}
+                    />
+                    <NewsContainer
+                        loading = {loading}
+                        news = {news}
+                    /> 
                 </section>
             </div>
     )

@@ -114,6 +114,41 @@
     text-align: center;
 }
 
+.search-news{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: c.$dark;
+    border-radius: 50px;
+    padding: 4px 6px;
+}
+
+.search-news:focus{
+    outline: c.$primary;
+}
+
+.input-news{
+    width: 150px;
+    border: none;
+    border-radius: 50px;
+    padding: 4px 6px;
+    margin-right: 4px;
+}
+
+.input-news:focus{
+    outline: none;
+}
+
+.button-search-news{
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.search-icon{
+    fill: c.$white;
+}
+
 @media (max-width: 640px){
     .news-container{
         display: flex;

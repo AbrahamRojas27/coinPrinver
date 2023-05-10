@@ -6,11 +6,8 @@ import { Memberships } from "../containers/Memberships";
 import { OurCoin  } from "../containers/OurCoin";
 import { NewsPreview } from "../containers/NewsPreview";
 import { CoinPrice } from "../containers/CoinPrice";
-import { useSelector } from "react-redux";
 
 function Home(){
-    const user = useSelector((state) => state.user)
-    console.log(user)
     return (
             <div className='home'>
                 <MobileMenu/>
