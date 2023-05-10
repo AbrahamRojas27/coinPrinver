@@ -151,6 +151,8 @@
     @include c.button;
     text-decoration: none;
     color: c.$dark;
+    display: flex;
+    align-items: center;
 }
 
 @media (max-width: 640px){
