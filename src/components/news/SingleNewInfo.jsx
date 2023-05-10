@@ -1,10 +1,12 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 function SingleNewInfo(props){
     const navigate = useNavigate()
     const toMemberships = () => navigate('/memberships')
-    
+    const user = useSelector((state) => state.user)
+    const newPremium = user ? user.membresia ? 'single-new-premium-content' : 'hidden' : 'hidden'
     return(
         <section>
             <div className='single-new-header'>
@@ -22,13 +24,13 @@ function SingleNewInfo(props){
                  <div dangerouslySetInnerHTML={{__html: props.freeContent}}></div>
             </article>
 
-            <article className='single-new-premium-content' >
+            <article className={newPremium} >
                  <div dangerouslySetInnerHTML={{__html: props.content}}></div>
             </article>
 
             <article className=''>
                 <p className=''></p>
-                <button className='bg-primary w-[200px] text-center px-4 py-2 text-lg font-semibold rounded-[40px]'></button>
+                <button className=''></button>
             </article>
         </section>
     )

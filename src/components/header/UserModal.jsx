@@ -12,7 +12,6 @@ function UserModal(props) {
     const openModal = props.userModal ? user ? 'user-modal' : 'hidden' : 'hidden'
     const image = user ? user.imagen : ''
     const name = user ? user.nombre : ''
-    console.log(user)
     return(
         <div className={openModal}>
             <div>
