@@ -41,7 +41,7 @@ function Header(){
 
             <div>
                {
-                  (localStorage.getItem('user') || user) 
+                  ((localStorage.getItem('user') !== null && localStorage.getItem('user')) || user) 
                      ? <button className='perfil-button' onClick={closeUserModal}>
                            <PerfilIcon/>
                         </button>

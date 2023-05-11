@@ -13,7 +13,10 @@ function MobileMenu(){
 
   const openModal = useSelector(state => state.modal)
   const navigate = useNavigate()
-  const toRegister = () => navigate('/login')
+  const toRegister = () => {
+    navigate('/login')
+    dispatch(setOpenModal(false))
+  }
   const dispatch = useDispatch()
   const closeModal = () => dispatch(setOpenModal(false))
   const modal = openModal ? 'mobile-menu' : 'hidden'

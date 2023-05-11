@@ -2,13 +2,12 @@
 
 .our-coin{
     width: 100%;
-    height: 100vh;
     display: grid;
     grid-template-columns: 1fr 1fr;
     justify-items:center ;
     align-items: center;
-    margin: 72px 0; 
-    padding: 0 16px;
+    padding: 88px 16px;
+    margin: 72px 0;
     background-image: url(https://www.coinpinver.com/Subastaexchange/public/uploads/news/img/bg-our-coin.jpg);
     background-repeat: no-repeat;
 }
@@ -17,6 +16,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .coin-banner-figure{
@@ -49,8 +49,9 @@
 .our-coin-button{
     @include c.button;
     padding: 16px 20px;
-    width: 200px;
+    width: 220px;
     font-size: 16px;
+    text-align: center;
     text-decoration: none;
     color: c.$dark;
 }
@@ -70,5 +71,11 @@
 
     .our-coin-text{
         text-align: center;
+    }
+}
+
+@media(max-width: 1280px){
+    .coin-banner-figure{
+        width: 60%;
     }
 }

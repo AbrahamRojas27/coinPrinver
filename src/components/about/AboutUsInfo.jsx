@@ -3,8 +3,8 @@ import React from 'react';
 function AboutUsInfo(props){
     return(
         <article className='about-text-container'>
-            <h2 className='about-title'>¿QUE ES COINPINVER?</h2>
-            <p className='about-text'>Creamos contenido de valor referencte al mundo de  las inversiones en criptomonedas apoyando al inversor con buenas desiciones al invertir en su portafolio, con analisis tecnico, analisis informativo detallado  y a su vez con informacion referente a inversiones en plataformas seguras y  reales.</p>
+            <h2 className='about-title'>¿NUESTRO OBJETIVO?</h2>
+            <p className='about-text'>Brindar la información más completa y detallada para invertir de forma sólida y rentable; a través de Noticias, Análisis y Señales de Trading.</p>
         </article>
     )
 }

@@ -9,7 +9,7 @@ function UserPanelNews(props){
 
     const searchNews = (e) =>{
         e.preventDefault;
-        const searchedNews = props.news.filter(news => news.nne_titulo.toLowerCase().split(" ").includes(props.search))
+        const searchedNews = props.news.filter(news => news.nne_titulo.toLowerCase().includes(props.search))
         props.setNews(searchedNews)
     }
 
@@ -23,7 +23,7 @@ function UserPanelNews(props){
            </div>
 
            <div className='search-news'>
-            <input className='input-news' type="text" onChange={handleInputChange}/>
+            <input className='input-news' type="text" onChange={handleInputChange} value={props.search}/>
             <button className='button-search-news' onClick={searchNews}>
                 <SearchIcon/>
             </button>

@@ -28,6 +28,7 @@
     display: grid;
     justify-items: center;
     min-width: 320px;
+    max-width: 380px;
     padding: 40px 20px;
     border-radius: 20px;
     background-color: c.$white;
@@ -168,6 +169,27 @@
         margin: 32px 0 0;
     }
 
+    .membership-oro:hover{
+        box-shadow: none;
+        img{
+            scale: none;
+        }
+    }
+
+    .plata:hover{
+        box-shadow: none;
+        img{
+            scale: none;
+        }
+    }
+
+    .bronce:hover{
+        box-shadow: none;
+        img{
+            scale: none;
+        }
+    }
+
     .memberships-title{
         text-align: center;
         margin: 0 0 80px;
@@ -190,6 +212,27 @@
     .membership-oro{
         max-width: 400px;
         margin: 32px 0 0;
+    }
+
+    .membership-oro:hover{
+        box-shadow: none;
+        img{
+            scale: none;
+        }
+    }
+
+    .plata:hover{
+        box-shadow: none;
+        img{
+            scale: none;
+        }
+    }
+
+    .bronce:hover{
+        box-shadow: none;
+        img{
+            scale: none;
+        }
     }
 
     .memberships-title{

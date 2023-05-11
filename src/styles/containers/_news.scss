@@ -171,3 +171,13 @@
         display: none;
     }
 }
+
+@media(min-width: 1280px){
+    .new-card{
+        min-width: 280px;
+        max-width: 500px;
+    }
+    .user-panel{
+        width: 300px;
+    }
+}

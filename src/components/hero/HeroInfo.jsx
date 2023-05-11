@@ -3,8 +3,8 @@ import React from 'react';
 function HeroInfo (){
     return(
         <article className='hero-text-container'>
-            <h2 className='hero-title'>Se parte de este criptomundo</h2>
-            <p className='hero-text'>Obtén nuestras membresías para ser el primero en hacer cambios financieros de tu vida</p>
+            <h2 className='hero-title'> SOMOS COINPINVER</h2>
+            <p className='hero-text'>Una empresa dedicada al Análisis de Criptomonedas e Inversiones, enfocada en ayudar a inversores al invertir en Criptomonedas y Acciones.</p>
         </article>
     )
 }
