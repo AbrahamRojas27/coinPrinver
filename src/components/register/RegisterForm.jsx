@@ -1,17 +1,21 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux';
+import { setError } from '../../actions'
 
 function RegisterForm(){
     const navigate = useNavigate();
+    const error = useSelector(state => state.error)
+    const dispatch = useDispatch()
 
     const [name, setName] = useState('');
     const [lastName, setLastName] = useState('');
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
-    const [phoneNumber, setPhoneNumber] = useState('')
-    const [password, setPassword] = useState('')
-    const [passwordConfirm, setPasswordConfirm] = useState('')
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const [password, setPassword] = useState('');
+    const [passwordConfirm, setPasswordConfirm] = useState('');
 
     const handelInputName = (e) =>{
         setName(e.target.value)
@@ -44,7 +48,7 @@ function RegisterForm(){
     const submit = (e) =>{
         e.preventDefault()
         if(password === passwordConfirm){
-            axios.post(process.env.REGISTER_USER, {
+            axios.post('https://www.coinpinver.com/coinpinverapi/api/usuarios', {
                 'username': username,
                 'f_name': name,
                 'l_name': lastName,
@@ -57,17 +61,20 @@ function RegisterForm(){
                 navigate('/')
               })
               .catch(function (error) {
-                console.log(error);
+                dispatch(setError(true))
               });
         } else{
-            info.setError(true)
+            dispatch(setError(true))
         }
     }
+
+    const errorText = error ? 'error-text' : 'hidden'
 
     return(
         <>
             <form className='register-form'>
-                <div className='w-full grid grid-cols-1 lg:grid-cols-2 gap-4'>
+                <p className={errorText}>Comprueba los datos</p>
+                <div className='input-container'>
                 <div>
                         <label className='input-label'>Nombre</label>
                         <input type='text' onChange={handelInputName} className='input'/>
@@ -91,23 +98,26 @@ function RegisterForm(){
                     </div>
                 </div>
 
-                <div>
-                    <label className='input-label'>Numero de telefono <span className='text-white opacity-70'>sin espacios</span></label>
-                    <input onChange={handelInputPhoneNumber} type='tel' className='input'/>
+                <div className='input-container'>
+                    <div>
+                        <label className='input-label'>Numero de telefono <span className='text-white opacity-70'>sin espacios</span></label>
+                        <input onChange={handelInputPhoneNumber} type='tel' className='input'/>
+                    </div>
+
+                    <div>
+                        <label className='input-label'>Contraseña</label>
+                        <input onChange={handelInputPassword} type='Password' className='input'/>
+                    </div>
                 </div>
 
-                <div>
-                    <label className='input-label'>Contraseña</label>
-                    <input onChange={handelInputPassword} type='Password' className='input'/>
+                <div className='input-container'>
+                    <div>
+                        <label className='input-label'>Confirme la contraseña</label>
+                        <input onChange={handelInputPasswordConfim} type='password' className='input'/>
+                    </div>
+                    <button className='button-register' onClick={submit}>Registrarme</button>
                 </div>
 
-                <div>
-                    <label className='input-label'>Confirme la contraseña</label>
-                    <input onChange={handelInputPasswordConfim} type='password' className='input'/>
-                </div>
-
-                <p className='error-text'>Las contraceñas no coinciden</p>
-                <button className='button' onClick={submit}>Registrarme</button>
             </form>
         </>
     )

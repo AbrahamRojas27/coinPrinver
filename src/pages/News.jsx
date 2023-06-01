@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { NewsContainer } from '../containers/NewsContainers';
 import { UserPanelNews } from '../containers/UserPanelNews';
 import { MobileMenu } from '../containers/MobileMenu';
@@ -12,48 +12,80 @@ const api = 'https://coinpinver.com/Subastaexchange/api/getNoticiaNewStructure'
 function News(){
     const loading = useSelector(state => state.loading)
 
+    const [cripto, setCripto] = useState(false)
+    const [stock,  setStock] = useState(false)
+
     const [search, setSearch] = useState("")
     const searchLower = search.toLowerCase()
 
-    const [news, setNews] = useState([]) 
+    const [fetchNews, setFetchNews] = useState([]) 
     const dispatch = useDispatch()
 
-    const handleInputChange = (e) =>{
-        setSearch(e.target.value)
+    const searchedNews =  useMemo(() => 
+        fetchNews.filter(news => news.nne_titulo.toLowerCase().includes(searchLower)),
+    [fetchNews, search])
+
+    const searchNews = useRef(null)
+    const searchNewsMobile = useRef(null)
+
+    const handleInputChange = () =>{
+        setSearch(searchNewsMobile.current.value)
     }
 
-    const searchNews = (e) =>{
-        e.preventDefault;
-        const searchedNews = news.filter(news => news.nne_titulo.toLowerCase().includes(searchLower))
-        setNews(searchedNews)
-    }
+    const newsStock = searchedNews.filter(news => news.diferenciador === 'Noticias de acciones/ Bolsa de valores')
+    const newsCripto = searchedNews.filter(news => news.diferenciador === 'Noticias de criptomonedas')
+
+    const news = cripto ? newsCripto : stock ? newsStock : searchedNews
+    
 
     useEffect(() =>{
-        if(search.length === 0){
             const fetchNews = async () =>{
                 dispatch(setLoading(true))
                 const news = await getAPI(api)
-                setNews(news.data)
+                setFetchNews(news.data)
                 dispatch(setLoading(false))
             }
             fetchNews()
-        }
-    }, [search])
+    
+        }, [])
+
+    const stockClass = stock ? 'filter-button--active' : 'filter-button'
+    const criptoClass = cripto ? 'filter-button--active' : 'filter-button'
+
+    const handleCripto = () =>{
+        setCripto(!cripto)
+    }
+    const handleStock = () =>{
+        setStock(!stock)
+    }
+
     return(
             <div className='news'>
                 <div className='search-news-mobile'>
-                    <input className='input-news-mobile' type="text" value={search} onChange={handleInputChange}/>
-                    <button className='button-search-news-mobile' onClick={searchNews}>
+                    <input className='input-news-mobile' type="text" value={search} ref={searchNewsMobile} onChange={handleInputChange}/>
+                    <div className='button-search-news-mobile'>
                         <SearchIcon/>
-                    </button>
+                    </div>
                 </div>
+
+                <div className='filter-container--mobile'>
+                    <button className={criptoClass} onClick={handleCripto}>Criptomonedas</button>
+                    <button className={stockClass} onClick={handleStock}>Acciones</button>
+                </div>
+
                 <MobileMenu />
+
                 <section className='news-content'>
                     <UserPanelNews 
-                        news = {news}
-                        setNews = {setNews}
                         search = {search}
                         setSearch = {setSearch}
+                        searchNews = {searchNews}
+                        stock = {stock}
+                        cripto = {cripto}
+                        setStock = {setStock}
+                        setCripto = {setCripto}
+                        handleStock = {handleStock}
+                        handleCripto = {handleCripto}
                     />
                     <NewsContainer
                         loading = {loading}

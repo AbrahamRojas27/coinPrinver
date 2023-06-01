@@ -17,9 +17,10 @@ function Header(){
    
    const openModal = () => dispatch(setOpenModal(true))
    const dispatch = useDispatch()
-   const user = useSelector(state => state.user)
+   const userState = useSelector(state => state.user)
+   const user = JSON.parse(localStorage.getItem('user')) || userState;
 
-    useEffect(() =>{
+   useEffect(() =>{
         window.addEventListener('scroll', () =>{
            window.scrollY > 0 ? setActive(true) : setActive(false)
         })

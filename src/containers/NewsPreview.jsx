@@ -29,6 +29,7 @@ function NewsPreview(){
                                 img={item.nne_imagenPreview}
                                 author={item.Nombre}
                                 content={item.nne_contenido}
+                                date={item.nne_fechaPublicacion}
                                 slug={`news/${item.nne_id}`}
                             />
                         ))

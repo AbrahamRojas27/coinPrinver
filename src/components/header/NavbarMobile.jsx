@@ -32,6 +32,9 @@ function NavbarMobile(){
                     </li>
                     ))
             }
+            <li>
+              <a href="https://coinpinver.com/Subastaexchange/noticias" className="nav-item">Señales</a>
+            </li>
         </ul>
        </nav>
     )

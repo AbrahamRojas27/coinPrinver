@@ -5,6 +5,14 @@ import { useNavigate } from 'react-router-dom';
 
 function MembershipPlata(props){
     const navigate = useNavigate();
+    const user = JSON.parse(localStorage.getItem('user'));
+    const membershipLink = user ?  user.membresia ? 'hidden' : 'button' : 'hidden'
+    const membershipButton = user ? 'hidden' : 'button' 
+
+    const toLogin = () =>{
+        navigate('/login')
+    }
+
     return(
         <div className='membership plata'>
             <MemberPlataImg />
@@ -31,7 +39,11 @@ function MembershipPlata(props){
                 </li>
             </ul>
 
-            <a href='https://coinpinver.com/Subastaexchange/scsecurity'  className='button'>Adquiere esta membresía</a>
+            <div>
+                <a href='https://coinpinver.com/Subastaexchange/scsecurity'  className={membershipLink}>Adquiere esta membresía</a>
+                <button className={membershipButton} onClick={toLogin}>Adquiere esta membresia</button>
+            </div>
+
         </div>
     )
 }

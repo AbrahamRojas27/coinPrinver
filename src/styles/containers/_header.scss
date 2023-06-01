@@ -48,7 +48,26 @@
     font-weight: 500;
     font-family: Arial, Helvetica, sans-serif;
     color: c.$white;
+    text-align: start;
 }
+
+.token-button{
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    font-family: Arial, Helvetica, sans-serif;
+    color: c.$white;
+    border-radius: 20px;
+    border: 1px solid c.$white;
+    padding: 8px;
+}
+
+.token-button:hover{
+    color: c.$primary;
+    border: 1px solid c.$primary;
+}
+
+
 
 .nav-item--active{
     text-decoration: none;
@@ -87,6 +106,7 @@
     fill: c.$white;
     transform: scale(1.3);
 }
+
 
 .user-modal{
     width: 200px;

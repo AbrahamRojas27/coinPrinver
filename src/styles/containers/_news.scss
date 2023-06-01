@@ -53,6 +53,15 @@
 .new-card-description{
     font-size: 16px;
     font-family: Arial, Helvetica, sans-serif;
+    color: c.$dark;
+    text-decoration: none;
+}
+
+.new-card-date{
+    font-size: 15px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    color: c.$dark;
     text-decoration: none;
 
 }
@@ -149,6 +158,34 @@
     fill: c.$white;
 }
 
+.filter-container{
+    display: grid;
+    justify-items: start;
+    gap: 16px;
+    padding: 16px 0;
+}
+
+.filter-button{
+    background: none;
+    border: 1px solid c.$terteary;
+    font-family: Arial, Helvetica, sans-serif;
+    color: c.$dark;
+    cursor: pointer;
+    border-radius: 20px;
+    padding: 8px 16px;
+}
+
+.filter-button--active{
+    border: 2px solid c.$primary;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.filter-container--mobile{
+    display: none;
+}
+
 @media (max-width: 640px){
     .news-container{
         display: flex;
@@ -159,7 +196,16 @@
         display: none;
     }
     .new-card{
-        min-width: 360px;
+        min-width: 320px;
+    }
+    .filter-container--mobile{
+        display: flex;
+        gap: 16px;
+        align-items: center;
+        justify-content: center;
+    }
+    .filter-button{
+        color: c.$white;
     }
 }
 
@@ -170,14 +216,24 @@
     .user-panel{
         display: none;
     }
+    .filter-container--mobile{
+        display: flex;
+        gap: 16px;
+        align-items: center;
+        justify-content: center;
+    }
+    .filter-button{
+        color: c.$white;
+    }
+    
 }
 
-@media(min-width: 1280px){
+@media(min-width: 1600px){
     .new-card{
-        min-width: 280px;
-        max-width: 500px;
+        min-width: 420px;
+        max-width: 420px;
     }
     .user-panel{
-        width: 300px;
+        width: 400px;
     }
 }

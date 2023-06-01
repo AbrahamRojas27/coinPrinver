@@ -7,14 +7,14 @@ const api = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&orde
 function CoinPrice(){
     const [items, setItems] = useState([])
 
-    useEffect(() =>{
-        const fetchNews =async () => {
-            const items = await fetchApi(api)
-            setItems(items)
-        }
+    // useEffect(() =>{
+    //     const fetchNews =async () => {
+    //         const items = await fetchApi(api)
+    //         setItems(items)
+    //     }
 
-        fetchNews()
-    }, [])
+    //     fetchNews()
+    // }, [])
 
     return(
             <section className='coin-price-container'>

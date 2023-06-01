@@ -5,6 +5,7 @@ import Home from './pages/Home.jsx'
 import Login from './pages/Login.jsx';
 import News from './pages/News.jsx';
 import MembershipsPage from './pages/MembershipsPage.jsx';
+import Register from './pages/Register.jsx'
 import Profile from './pages/Profile.jsx';
 import { SingleNew } from './pages/SingleNew.jsx';
 import NotFound from './pages/NotFound.jsx';
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
         path: 'profile',
         element: <Profile />
       },
+      {
+        path: 'register',
+        element: <Register/>
+      }
     ]
   }
 ])

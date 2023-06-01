@@ -20,6 +20,7 @@ function NewsContainer(props){
                             description= {item.nne_descripcion}
                             img={item.nne_imagenPreview}
                             author={item.Nombre}
+                            date={item.fechaPublicacion}
                             content={item.nne_contenido}
                             slug={item.nne_id}
                         />

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { LoginFormImg } from './LoginFormImg';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import fetchApi from '../../api';
 import { setError, setUser } from '../../actions';
@@ -68,10 +68,14 @@ function LoginForm(){
                 <button className='login-button' onClick={handleInputSubmit}>Entrar</button>
             </form>
 
-            <a href='https://coinpinver.com/Subastaexchange/register#tab1' className='login-button-register'>Crear cuenta</a>
+            <a href="https://coinpinver.com/Subastaexchange/register#tab2" className='login-button-register'>Crear cuenta</a>
+
        </section>
 
     )
 }
+
+//             <button onClick={() => navigate('/register')} className='login-button-register'>Crear cuenta</button>
+
 
 export { LoginForm }

@@ -1,16 +1,12 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import SearchIcon from '../components/SearchIcon';
 
-function UserPanelNews(props){
+function UserPanelNews(props){  
+    const stockClass = props.stock ? 'filter-button--active' : 'filter-button'
+    const criptoClass = props.cripto ? 'filter-button--active' : 'filter-button'
 
-    const handleInputChange = (e) =>{
-        props.setSearch(e.target.value)
-    }
-
-    const searchNews = (e) =>{
-        e.preventDefault;
-        const searchedNews = props.news.filter(news => news.nne_titulo.toLowerCase().includes(props.search))
-        props.setNews(searchedNews)
+    const handleInputChange = () =>{
+        props.setSearch(props.searchNews.current.value)
     }
 
     return(
@@ -23,10 +19,14 @@ function UserPanelNews(props){
            </div>
 
            <div className='search-news'>
-            <input className='input-news' type="text" onChange={handleInputChange} value={props.search}/>
-            <button className='button-search-news' onClick={searchNews}>
+                <input className='input-news' type="text" ref={props.searchNews} onChange={handleInputChange} value={props.search}/>
+            <div className='button-search-news'>
                 <SearchIcon/>
-            </button>
+            </div>
+           </div>
+           <div className='filter-container'>
+                <button className={criptoClass} onClick={props.handleCripto}>Criptomonedas</button>
+                <button className={stockClass} onClick={props.handleStock}>Acciones</button>
            </div>
         </aside>
     )
