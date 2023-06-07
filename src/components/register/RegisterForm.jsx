@@ -49,13 +49,12 @@ function RegisterForm(){
         e.preventDefault()
         if(password === passwordConfirm){
             axios.post('https://www.coinpinver.com/coinpinverapi/api/usuarios', {
-                'username': username,
-                'f_name': name,
-                'l_name': lastName,
-                'email': email,
-                'password': password,
-                'phone': phoneNumber,
-                'password': password,
+                username: username,
+                f_name: name,
+                l_name: lastName,
+                email: email,
+                password: password,
+                phone: phoneNumber,
               })
               .then(function () {
                 navigate('/')
