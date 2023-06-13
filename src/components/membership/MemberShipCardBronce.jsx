@@ -1,45 +1,24 @@
 import React from 'react';
 import { MemberBronceImg } from './MemberBronceImg';
-import { useNavigate } from 'react-router-dom';
 
 
-function MembershipBronce(){
-    const navigate = useNavigate()
-    const user = JSON.parse(localStorage.getItem('user'));
-    const membershipLink = user ?  user.membresia ? 'hidden' : 'button' : 'hidden'
-    const membershipButton = user ? 'hidden' : 'button' 
-
-    const toLogin = () =>{
-        navigate('/login')
-    }
+function MembershipBronce({info}){
 
     return(
         <div className='membership bronce'>
             <MemberBronceImg />
             <h3 className='membership-title'>MEMBRESIA BRONCE</h3>
             <ul className='membership-list'>
-                <li className='membership-list-item'>
-                    <p className='membership-text'>{'Ánalisis técnico corto/mediano plazo.'}</p>
-                </li>
-                <li className='membership-list-item'>
-                    <p className='membership-text'>{'Ánalisis informativo (noticias último momento).'}</p>
-                </li>
-                <li className='membership-list-item'>
-                    <p className='membership-text'>{'Explicacion práctica y teorica de investigacion de criptomoneda.'}</p>
-                </li>
-                <li className='membership-list-item'>
-                    <p className='membership-text'>{'Redaccion informática de ultimo momento.'}</p>
-                </li>
-                <li className='membership-list-item'>
-                    <p className='membership-text'>{'Señal práctico de inversión de 5 criptomonedas por mes.'}</p>
-                </li>
-                <li className='membership-list-item'>
-                    <p className='membership-text'>{'Invitación a proyectos estables y solidos defi, airdrops, tokens, icos, metaverso, blockchain.(se compartiran solo proyectos sólidos y reales de investigación profunda para poder compartir buenas oportunidades).'}</p>
-                </li>
+            {
+                info.map(info =>(
+                    <li className='membership-list-item'>
+                        <p className='membership-text'>{info.beneficio}</p>
+                    </li>
+                ))
+            }
             </ul>
                 <div>
-                    <a href='https://coinpinver.com/Subastaexchange/scsecurity'  className={membershipLink}>Adquiere esta membresía</a>
-                    <button className={membershipButton} onClick={toLogin}>Adquiere esta membresia</button>
+                    <a href='https://checkout.stripe.com/c/pay/cs_live_a1MMdivlToddQkXGEszWNanPbFLJYsKbFVu5c0yN7AUQ10Muzqe5mvg5Rf#fidkdWxOYHwnPyd1blppbHNgWjA0SVFwQH9Cc2J1TVBcTF1HYXRoY1dSSzFQbUQ3V1N2R0tPZ3BPZmdGTHRqZl9KQzJDMldmQmdfZHdvNHB8f0xfZERWb39JaTJWXFZdYHc3NVRXXWZgXWBNNTVJdjFPT0lRSCcpJ3VpbGtuQH11anZgYUxhJz8nZEBQM3RXMGxRPHd3MTxKMG50Jyknd2BjYHd3YHdKd2xibGsnPydtcXF1dj8qKmZtYGZuanBxK3Zxd2x1YCtmamgqJ3gl'  className='button'>Adquiere esta membresía</a>
                 </div>
         </div>
     )

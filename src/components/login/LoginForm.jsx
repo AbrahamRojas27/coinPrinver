@@ -68,7 +68,7 @@ function LoginForm(){
                 <button className='login-button' onClick={handleInputSubmit}>Entrar</button>
             </form>
 
-            <Link to='/register' className='login-button-register'>Crear cuenta</Link>
+            <a href='/register' className='login-button-register'>Crear cuenta</a>
 
        </section>
 

@@ -45,27 +45,27 @@ function RegisterForm(){
         setPhoneNumber(e.target.value)
     }
 
-    const submit = (e) =>{
-        e.preventDefault()
-        if(password === passwordConfirm){
-            axios.post('https://www.coinpinver.com/coinpinverapi/api/usuarios', {
-                username: username,
-                f_name: name,
-                l_name: lastName,
-                email: email,
-                password: password,
-                phone: phoneNumber,
-              })
-              .then(function () {
-                navigate('/')
-              })
-              .catch(function (error) {
-                dispatch(setError(true))
-              });
-        } else{
-            dispatch(setError(true))
-        }
-    }
+    // const submit = (e) =>{
+    //     e.preventDefault()
+    //     if(password === passwordConfirm){
+    //         axios.post('https://www.coinpinver.com/coinpinverapi/api/usuarios', {
+    //             username: username,
+    //             f_name: name,
+    //             l_name: lastName,
+    //             email: email,
+    //             password: password,
+    //             phone: phoneNumber,
+    //           })
+    //           .then(function () {
+    //             navigate('/')
+    //           })
+    //           .catch(function (error) {
+    //             dispatch(setError(true))
+    //           });
+    //     } else{
+    //         dispatch(setError(true))
+    //     }
+    // }
 
     const errorText = error ? 'error-text' : 'hidden'
 
