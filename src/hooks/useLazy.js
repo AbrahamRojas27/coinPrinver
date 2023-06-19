@@ -19,7 +19,7 @@ export function useLazyLoad(element) {
               : import('intersection-observer')
       ).then(() =>{
           observer = new IntersectionObserver(onChange, {
-              rootMargin: '100px'
+              rootMargin: '-100px'
           })
 
           observer.observe(element.current)
