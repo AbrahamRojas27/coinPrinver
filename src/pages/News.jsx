@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { NewsContainer } from '../containers/NewsContainers';
 import { UserPanelNews } from '../containers/UserPanelNews';
-import { MobileMenu } from '../containers/MobileMenu';
+import  MobileMenu  from '../containers/MobileMenu';
 import { useSelector, useDispatch } from 'react-redux';
 import { setLoading } from '../actions';
 import SearchIcon from '../components/SearchIcon';

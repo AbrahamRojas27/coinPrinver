@@ -8,10 +8,16 @@
     gap: 16px;
     justify-items: center;
     padding: 20px;
+    animation: opacity .5s linear;
+    animation-fill-mode: forwards;
 }
 
 .new-card-container{
     text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .new-card{
@@ -23,6 +29,8 @@
     background-color: c.$white;
     border-radius: 20px;
     overflow: hidden;
+    animation: opacity .5s linear;
+    animation-fill-mode: forwards;
 }
 
 .new-card-img-figure{
@@ -101,8 +109,9 @@
     align-items: center;
     padding: 80px 16px 0;
     gap: 8px;
-    background-color: c.$white;
     position: fixed;
+    animation: toRight .5s linear;
+    animation-fill-mode: forwards;
 }
 
 .user-panel-figure{
@@ -121,19 +130,16 @@
     font-size: 18px;
     font-weight: 500;
     text-align: center;
+    color: c.$white
 }
 
 .search-news{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: c.$dark;
+    background-color: c.$white;
     border-radius: 50px;
     padding: 4px 6px;
-}
-
-.search-news:focus{
-    outline: c.$primary;
 }
 
 .input-news{
@@ -154,11 +160,8 @@
     cursor: pointer;
 }
 
-.search-icon{
-    fill: c.$white;
-}
-
 .filter-container{
+    width: 100%;
     display: grid;
     justify-items: start;
     gap: 16px;
@@ -169,7 +172,7 @@
     background: none;
     border: 1px solid c.$terteary;
     font-family: Arial, Helvetica, sans-serif;
-    color: c.$dark;
+    color: c.$white;
     cursor: pointer;
     border-radius: 20px;
     padding: 8px 16px;
@@ -203,6 +206,7 @@
         gap: 16px;
         align-items: center;
         justify-content: center;
+        
     }
     .filter-button{
         color: c.$white;

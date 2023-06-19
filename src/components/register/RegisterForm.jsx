@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux';
-import { setError } from '../../actions'
+import { setError, setUser } from '../../actions'
 
 function RegisterForm(){
     const navigate = useNavigate();
@@ -16,6 +16,8 @@ function RegisterForm(){
     const [phoneNumber, setPhoneNumber] = useState('');
     const [password, setPassword] = useState('');
     const [passwordConfirm, setPasswordConfirm] = useState('');
+    const [whatch, setWhatch] = useState(false)
+    const [whatchConfirm, setWhatchConfirm] = useState(false)
 
     const handelInputName = (e) =>{
         setName(e.target.value)
@@ -45,29 +47,49 @@ function RegisterForm(){
         setPhoneNumber(e.target.value)
     }
 
-    // const submit = (e) =>{
-    //     e.preventDefault()
-    //     if(password === passwordConfirm){
-    //         axios.post('https://www.coinpinver.com/coinpinverapi/api/usuarios', {
-    //             username: username,
-    //             f_name: name,
-    //             l_name: lastName,
-    //             email: email,
-    //             password: password,
-    //             phone: phoneNumber,
-    //           })
-    //           .then(function () {
-    //             navigate('/')
-    //           })
-    //           .catch(function (error) {
-    //             dispatch(setError(true))
-    //           });
-    //     } else{
-    //         dispatch(setError(true))
-    //     }
-    // }
+     const submit = async (e) =>{
+         e.preventDefault()
+         if(password === passwordConfirm){
+             await axios.post('https://www.coinpinver.com/coinpinverapi/api/usuarios', {
+                 username: username,
+                 f_name: name,
+                 l_name: lastName,
+                 email: email,
+                 password: password,
+                 phone: phoneNumber,
+               })
+               .then(function () {
+                axios.post('https://www.coinpinver.com/coinpinverapi/api/login',{
+                    username,
+                    password
+                }).then((res) => {
+                    dispatch(setUser(res))
+                    navigate('/')
+                })
+                .catch(err => err)
+               })
+               .catch(function (error) {
+                 dispatch(setError(true))
+               });
+         } else{
+             dispatch(setError(true))
+         }
+     }
+
+    const onClickPassword = (setChange) =>{
+        if(setChange === setWhatch){
+            setWhatch(!whatch)
+        } else{
+            setWhatchConfirm(!whatchConfirm)
+        }
+            
+    }
 
     const errorText = error ? 'error-text' : 'hidden'
+    const passwordType = whatch ? 'text' : 'password'
+    const confirmType = whatchConfirm ? 'text' : 'password'
+    const whatchClass = whatch ? 'whatch--active' : 'whatch'
+    const whatchConfirmClass = whatchConfirm ? 'whatch--active' : 'whatch'
 
     return(
         <>
@@ -105,14 +127,36 @@ function RegisterForm(){
 
                     <div>
                         <label className='input-label'>Contraseña</label>
-                        <input onChange={handelInputPassword} type='Password' className='input'/>
+                        <input onChange={handelInputPassword} type={passwordType} className='input'/>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width={16}
+                            height={16}
+                            fill="currentColor"
+                            className={`bi bi-eye-fill ${whatchClass}`}
+                            onClick={() => onClickPassword(setWhatch)}
+                        >
+                            <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+                            <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+                        </svg>
                     </div>
                 </div>
 
                 <div className='input-container'>
                     <div>
                         <label className='input-label'>Confirme la contraseña</label>
-                        <input onChange={handelInputPasswordConfim} type='password' className='input'/>
+                        <input onChange={handelInputPasswordConfim} type={confirmType} className='input'/>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width={16}
+                            height={16}
+                            fill="currentColor"
+                            className={`bi bi-eye-fill ${whatchConfirmClass}`}
+                            onClick={() => onClickPassword(setWhatchConfirm)}
+                        >
+                            <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+                            <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+                        </svg>
                     </div>
                     <button className='button-register' onClick={submit}>Registrarme</button>
                 </div>

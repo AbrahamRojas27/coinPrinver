@@ -1,15 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { MembershipOro } from '../components/membership/MembershipCardOro'
 import {MembershipBronce} from '../components/membership/MemberShipCardBronce'
 import { MembershipPlata} from '../components/membership/MembershipCardPlata'
 import fetchApi from '../api'
-import { useDispatch, useSelector } from 'react-redux'
-import { setLoading } from '../actions'
-import { LoadingSkeleton } from '../components/news/LoadingSkeleton'
 
 function Memberships(){
-    const dispatch = useDispatch()
-    const loading = useSelector(state => state.loading)
+    const element = useRef()
 
     const [info, setInfo] = useState([])
     const [infoOro, setInfoOro] = useState([])
@@ -30,7 +26,7 @@ function Memberships(){
     }, [])
     
     return(
-            <section className='memberships lg:grid lg:grid-flow-row justify-items-center mt-44'>
+            <section ref={element} className='memberships lg:grid lg:grid-flow-row justify-items-center mt-44'>       
                 <h3 className='memberships-title'>SE PARTE DE NUESTRO GRUPO EXCLUSIVO</h3>
                 <div className='memberships-container'>
                     <MembershipPlata 
@@ -47,4 +43,4 @@ function Memberships(){
     )
 }
 
-export { Memberships }
+export default Memberships 

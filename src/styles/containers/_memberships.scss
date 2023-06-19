@@ -6,6 +6,7 @@
     align-items: center;
     margin: 72px 0;
     padding: 0 16px;
+    min-height: 500px;
 }
 
 .memberships-title{
@@ -36,6 +37,8 @@
     background: rgb(255,255,255);
     transition: .5s;
     background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 50%, rgba(255,255,90,1) 100%);  
+    animation: toBottom .5s linear;
+    animation-fill-mode: forwards;
 }
 
 .bronce:hover{
@@ -73,7 +76,7 @@
 
 .membership-oro{
     min-width: 320px;
-    height: 110%;
+    min-height: 110%;
     display: grid;
     justify-items: center;
     padding: 20px;
@@ -82,6 +85,9 @@
     background: rgb(255,255,255);
     transition: .3s;
     background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 50%, rgba(255,255,90,1) 100%);
+    animation: toBottom .8s linear;
+    animation-fill-mode: forwards;
+
 }
 
 .membership-title{
@@ -129,17 +135,17 @@
 }
 
 .membership-img-bronce{
-    width: 130px;
+    width: 140px;
     margin: -100px auto 0;
 }
 
 .membership-img-plata{
-    width: 190px;
+    width: 140px;
     margin: -100px auto 0;
 }
 
 .membership-img-oro{
-    width: 280px;
+    width: 160px;
     margin: -100px auto 0;
 }
 

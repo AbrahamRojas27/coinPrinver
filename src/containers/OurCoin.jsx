@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { OurCoinInfo } from '../components/ourCoin/OurCoinInfo';
-import { CoinBanner } from '../components/ourCoin/CoinBanner';
+import CoinVideo from '../components/ourCoin/CoinVideo';
+import { useLazyLoad } from '../hooks/useLazy';
 
 function OurCoin(){
+    const element = useRef()
+    const isIntersecting = useLazyLoad(element)
     return(
-        <section className='our-coin'>
-                <OurCoinInfo />
-                <CoinBanner />
+        <section ref={element} className='our-coin'>
+                {isIntersecting && (
+                    <>
+                        <OurCoinInfo />
+                        <CoinVideo />
+                    </>
+                )}
         </section>
     )
 }
 
-export { OurCoin }
+export default OurCoin 

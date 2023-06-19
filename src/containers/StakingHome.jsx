@@ -9,4 +9,4 @@
   }
 
 
-export { StakingHome }
+export default StakingHome 

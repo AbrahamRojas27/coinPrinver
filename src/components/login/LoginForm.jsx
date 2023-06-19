@@ -5,10 +5,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import fetchApi from '../../api';
 import { setError, setUser } from '../../actions';
+import axios from 'axios';
 
 
 function LoginForm(){
-    const USER_API = 'https://coinpinver.com/Subastaexchange/api/login/'
+    const USER_API = 'https://www.coinpinver.com/coinpinverapi/api/login'
 
     const user = useSelector(state => state.user)
     const error = useSelector(state => state.error)
@@ -29,10 +30,14 @@ function LoginForm(){
 
     const handleInputSubmit = async (e) =>{
         e.preventDefault();
-        let res = await fetchApi(`${USER_API}/${userEmail}/${userPassword}`)
-        localStorage.setItem('user', JSON.stringify(res.data))
-        dispatch(setUser(JSON.parse(localStorage.getItem('user'))))
-        dispatch(setError(true))
+        await axios.post(USER_API, {
+            userEmail,
+            userPassword
+        })
+        .then((res) => console.log(res))
+        .catch((err) => dispatch(setError(true)))
+
+        
     }
 
     useEffect(() =>{
@@ -68,14 +73,15 @@ function LoginForm(){
                 <button className='login-button' onClick={handleInputSubmit}>Entrar</button>
             </form>
 
-            <a href='/register' className='login-button-register'>Crear cuenta</a>
+            
+            <button onClick={() => navigate('/register')} className='login-button-register'>Crear cuenta</button>
 
        </section>
 
     )
 }
 
-//             <button onClick={() => navigate('/register')} className='login-button-register'>Crear cuenta</button>
-
+           
+// <a href='/register' className='login-button-register'>Crear cuenta</a>
 
 export { LoginForm }

@@ -20,6 +20,10 @@ $error: #ff0000;
     box-sizing: border-box;
 }
 
+body{
+    background-color: $dark;
+}
+
 @mixin button{
     padding: 8px 20px;
     background-color: $primary;
@@ -52,4 +56,57 @@ $error: #ff0000;
 
 .hidden{
     display: none;
+}
+
+@keyframes opacity{
+    from{
+        opacity: 0%;
+    }
+    to{
+        opacity: 100%;
+    }
+}
+
+@keyframes toLeft{
+    from{
+        opacity: 0%;
+        transform: translateX(20px);
+    }
+    to{
+        opacity: 100%;
+        transform: translateX(0px);
+    }
+}
+
+@keyframes toRight{
+    from{
+        opacity: 0%;
+        transform: translateX(-20px);
+    }
+    to{
+        opacity: 100%;
+        transform: translateX(0px);
+    }
+}
+
+@keyframes toBottom{
+    from{
+        opacity: 0%;
+        transform: translateY(-20px);
+    }
+    to{
+        opacity: 100%;
+        transform: translateY(0px);
+    }
+}
+
+@keyframes toTop{
+    from{
+        opacity: 0%;
+        transform: translateY(20px);
+    }
+    to{
+        opacity: 100%;
+        transform: translateY(0px);
+    }
 }

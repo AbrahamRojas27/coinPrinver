@@ -65,4 +65,4 @@ function MobileMenu(){
     )
 }
 
-export {MobileMenu}
+export default MobileMenu

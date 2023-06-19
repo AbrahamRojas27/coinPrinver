@@ -10,7 +10,7 @@
     margin: 72px 0;
     background-image: url(https://www.coinpinver.com/Subastaexchange/public/uploads/news/img/bg-our-coin.jpg);
     background-repeat: no-repeat;
-    background-size: 120%;
+    background-size:cover;
 }
 
 .coin-banner{
@@ -21,7 +21,7 @@
 }
 
 .coin-banner-figure{
-    width: 80%;
+    width: 70%;
 }
 
 .coin-banner-img{
@@ -31,7 +31,10 @@
 
 .our-coin-text-container{
     display: grid;
+    padding: 20px;
     gap: 14px;
+    animation: opacity 1s linear;
+    animation-fill-mode: forwards;
 }
 
 .our-coin-title{
@@ -50,7 +53,7 @@
 .coin-button-container{
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: start;
     gap: 16px;
 }
 

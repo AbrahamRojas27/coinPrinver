@@ -6,10 +6,10 @@ import { HeroInfo } from "../components/hero/HeroInfo";
 function Hero(){
     return(
         <section className="hero">
-            <HeroImg />
-            <HeroInfo />
+            <HeroImg/>
+            <HeroInfo/>
         </section>
     )
 }
 
-export { Hero }
+export default Hero 
