@@ -1,5 +1,6 @@
 @use '../global' as c;
 .home{
+    min-height: 100vh;
     background-color: c.$dark;
     padding: 20px 0;
 }
