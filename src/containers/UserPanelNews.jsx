@@ -1,7 +1,10 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import SearchIcon from '../components/SearchIcon';
+import { useSelector } from 'react-redux';
 
 function UserPanelNews(props){  
+    let user = useSelector(state => state.user.user)
+
     const stockClass = props.stock ? 'filter-button--active' : 'filter-button'
     const criptoClass = props.cripto ? 'filter-button--active' : 'filter-button'
 
@@ -12,10 +15,10 @@ function UserPanelNews(props){
     return(
         <aside className='user-panel'>
            <figure className='user-panel-figure'>
-                <img className='user-panel-img' src='https://www.coinpinver.com/Subastaexchange/public/uploads/news/img/coin.png' alt='coinPinver'/>
+                <img className='user-panel-img' src={user ? user?.imagen : 'https://www.coinpinver.com/Subastaexchange/public/uploads/news/img/coin.png'} alt='coinPinver'/>
            </figure>
            <div>
-                <p className='user-panel-username'>CoinPinver</p>
+                <p className='user-panel-username'>{user?.nombre}</p>
            </div>
 
            <div className='search-news'>

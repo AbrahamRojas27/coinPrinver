@@ -6,19 +6,19 @@ import { Navbar } from '../components/header/Navbar';
 import { Btn } from '../components/header/Btn';
 import { MenuIcon } from '../components/header/MenuIcon';
 import { useDispatch, useSelector } from 'react-redux'
-import { setOpenModal } from '../actions';
+import { setOpenModal } from '../redux/uiSlice';
 import UserModal from '../components/header/UserModal';
 import PerfilIcon from '../components/header/PerfilIcon';
 
 
 function Header(){
+   const user = useSelector(state => state.user.user)
    const [active, setActive] = useState(false)
    const [userModal, setUserModal] = useState(false)
    
    const openModal = () => dispatch(setOpenModal(true))
    const dispatch = useDispatch()
    const userState = useSelector(state => state.user)
-   const user = JSON.parse(localStorage.getItem('user')) || userState;
 
    useEffect(() =>{
         window.addEventListener('scroll', () =>{
@@ -42,7 +42,7 @@ function Header(){
 
             <div>
                {
-                  ((localStorage.getItem('user') !== null && localStorage.getItem('user')) || user) 
+                  user
                      ? <button className='perfil-button' onClick={closeUserModal}>
                            <PerfilIcon/>
                         </button>

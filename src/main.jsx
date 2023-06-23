@@ -9,14 +9,11 @@ import Register from './pages/Register.jsx'
 import Profile from './pages/Profile.jsx';
 import { SingleNew } from './pages/SingleNew.jsx';
 import NotFound from './pages/NotFound.jsx';
-import reducer from './reducer/reducer.js'
 import './styles/main.scss'
 import { Provider } from 'react-redux';
-import { legacy_createStore as createStore } from 'redux';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { loader } from './pages/SingleNew.jsx';
-import { QueryClient, QueryClientProvider } from 'react-query';
-
+import store from './redux/store.js'
 
 
 const router = createBrowserRouter([
@@ -58,16 +55,11 @@ const router = createBrowserRouter([
   }
 ])
 
-const queryClient = new QueryClient()
-
-const store = createStore(reducer);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
       <Provider store={store}>
         <RouterProvider router={router} />
       </Provider>
-    </QueryClientProvider>
   </React.StrictMode>
 )

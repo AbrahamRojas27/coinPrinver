@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { SingleNewInfo } from '../components/news/SingleNewInfo';
 import MobileMenu from '../containers/MobileMenu';
-import fetchApi from '../api';
+import {fetchApi} from '../api';
 
 const SINGLE_NEW = 'https://coinpinver.com/Subastaexchange/api/noticia/'
 
@@ -15,6 +15,7 @@ const loader = async ({params}) => {
 
 function SingleNew(){
     const { singleNew } = useLoaderData()
+    
     return(
                 <div className='single-new'>
                     <MobileMenu/>

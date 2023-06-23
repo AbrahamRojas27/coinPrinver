@@ -1,36 +1,31 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { MoonIcon } from '../components/header/MoonIcon'
 import { SunIcon } from '../components/header/SunIcon'
 import CloseModalBtn  from '../components/header/CloseModalBtn'
 import { NavbarMobile } from '../components/header/NavbarMobile'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { setOpenModal } from '../actions'
-import { setUser } from '../actions'
-
+import { setOpenModal } from '../redux/uiSlice'
 
 function MobileMenu(){
+  let user = useSelector(state => state.user.user)
 
-  const openModal = useSelector(state => state.modal)
+  const openModal = useSelector(state => state.openModal)
   const navigate = useNavigate()
   const toRegister = () => {
-    navigate('/login')
+    //navigate('/login')
     dispatch(setOpenModal(false))
   }
   const dispatch = useDispatch()
   const closeModal = () => dispatch(setOpenModal(false))
   const modal = openModal ? 'mobile-menu' : 'hidden'
-  const user = JSON.parse(localStorage.getItem('user'))
 
   const logout = () => {
       localStorage.removeItem('user')
-      props.dispatch(setUser(null))
-      props.setUserModal(false)
+      setUser(null)
   }
 
-  const image = user ? user.imagen : ''
-  const name = user ? user.nombre : ''
-  const userImg = user ? '' : 'hidden'
+  const userClass = user ? ' ' : 'hidden' 
 
   return(
     <section className={modal}>
@@ -40,11 +35,11 @@ function MobileMenu(){
           </button>
         </div>
 
-        <div className={userImg}>
+        <div className={userClass}>
             <figure className="user-modal-img">
-                <img src={image} alt="user image" />
+                <img src={user?.imagen} alt="user image" />
             </figure>
-            <p className="user-modal-username">{name}</p>
+            <p className="user-modal-username">{user?.nombre}</p>
         </div>
         
         <NavbarMobile/>

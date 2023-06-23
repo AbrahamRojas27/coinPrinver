@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { MembershipOro } from '../components/membership/MembershipCardOro'
 import {MembershipBronce} from '../components/membership/MemberShipCardBronce'
 import { MembershipPlata} from '../components/membership/MembershipCardPlata'
-import fetchApi from '../api'
+import {fetchApi} from '../api'
 
 function Memberships(){
     const element = useRef()

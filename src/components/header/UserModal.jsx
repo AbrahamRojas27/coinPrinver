@@ -1,24 +1,24 @@
-import { setUser } from "../../actions"
+import { useDispatch, useSelector } from "react-redux"
+import { enterUser } from "../../redux/userSlice"
 
 function UserModal(props) {
-    
-    const user = JSON.parse(localStorage.getItem('user'))
+    let user = useSelector(state => state.user.user)
+    const dispatch = useDispatch()
 
     const logout = () => {
         localStorage.removeItem('user')
-        props.dispatch(setUser(null))
+        dispatch(enterUser(null))
         props.setUserModal(false)
     }
+
     const openModal = props.userModal ? user ? 'user-modal' : 'hidden' : 'hidden'
-    const image = user ? user.imagen : ''
-    const name = user ? user.nombre : ''
     return(
         <div className={openModal}>
             <div>
                 <figure className="user-modal-img">
-                    <img src={image} alt="user image" />
+                    <img src={user?.imagen} alt="user image" />
                 </figure>
-                <p className="user-modal-username">{name}</p>
+                <p className="user-modal-username">{user?.nombre}</p>
             </div>
             <button className="logout-button" onClick={logout}>Cerrar session</button>
         </div>

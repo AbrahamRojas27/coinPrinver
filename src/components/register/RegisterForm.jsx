@@ -2,12 +2,31 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux';
-import { setError, setUser } from '../../actions'
+import { setError } from '../../redux/uiSlice';
 
 function RegisterForm(){
     const navigate = useNavigate();
     const error = useSelector(state => state.error)
     const dispatch = useDispatch()
+
+    const login = async () =>{
+        await axios.post(USER_API, {
+            username: email,
+            password: password
+        })
+        .then((res) => {
+            if(res.data.message === 'Correcto'){
+                localStorage.setItem('user', res.data.data.jwt)
+                //navigate('/')
+                dispatch(setError(false))
+            } else{
+                dispatch(setError(true))
+                console.log(res.data)
+            }
+
+        })
+        .catch((err) => dispatch(setError(true)))
+    }
 
     const [name, setName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -51,24 +70,15 @@ function RegisterForm(){
          e.preventDefault()
          if(password === passwordConfirm){
              await axios.post('https://www.coinpinver.com/coinpinverapi/api/usuarios', {
-                 username: username,
-                 f_name: name,
-                 l_name: lastName,
-                 email: email,
-                 password: password,
-                 phone: phoneNumber,
+                 'username': username,
+                 'f_name': name,
+                 'l_name': lastName,
+                 'email': email,
+                 'password': password,
+                 'phone': phoneNumber,
                })
-               .then(function () {
-                axios.post('https://www.coinpinver.com/coinpinverapi/api/login',{
-                    username,
-                    password
-                }).then((res) => {
-                    dispatch(setUser(res))
-                    navigate('/')
-                })
-                .catch(err => err)
-               })
-               .catch(function (error) {
+               .then(async (res) => console.log(res))
+               .catch((error) => {
                  dispatch(setError(true))
                });
          } else{

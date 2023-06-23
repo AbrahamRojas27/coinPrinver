@@ -1,19 +1,20 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useState } from 'react';
 import { LoginFormImg } from './LoginFormImg';
-import { Link, useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import fetchApi from '../../api';
-import { setError, setUser } from '../../actions';
+import { setError } from '../../redux/uiSlice';
 import axios from 'axios';
+import { userData } from '../../redux/userSlice';
 
 
 function LoginForm(){
     const USER_API = 'https://www.coinpinver.com/coinpinverapi/api/login'
 
-    const user = useSelector(state => state.user)
-    const error = useSelector(state => state.error)
+    const error = useSelector(state => state.ui.error)
     const dispatch = useDispatch()
+
+    const [whatch, setWhatch] = useState(false)
 
     const navigate = useNavigate()
 
@@ -31,20 +32,36 @@ function LoginForm(){
     const handleInputSubmit = async (e) =>{
         e.preventDefault();
         await axios.post(USER_API, {
-            userEmail,
-            userPassword
+            username: userEmail,
+            password: userPassword
         })
-        .then((res) => console.log(res))
-        .catch((err) => dispatch(setError(true)))
+        .then((res) => {
+            if(res.data.message === 'Correcto'){
+                localStorage.setItem('user', res.data.data.jwt)
+                navigate('/')
+                dispatch(setError(false))
+            }else{
+                dispatch(setError(true))
+            }
+            
+        })
+        .catch((err) => console.log(err))
 
         
     }
 
-    useEffect(() =>{
-            if(user){
-                navigate('/')
-            }
-    }, [user])
+    const whatchClass = whatch ? 'whatch--active' : 'whatch'
+
+    const onClickPassword = (setChange) =>{
+        if(setChange === setWhatch){
+            setWhatch(!whatch)
+        } else{
+            setWhatchConfirm(!whatchConfirm)
+        }
+            
+    }
+    const passwordType = whatch ? 'text' : 'password'
+
 
     return(
        <section className='login-form-container' >
@@ -67,8 +84,21 @@ function LoginForm(){
 
                 <div className='login-input-container'>
                     <label className='input-label'>Contraseña</label>
-                    <input placeholder='Contraseña' type='password' onChange={handleInputChangePassword} className='input'/>
-                </div>
+                    <div>
+                        <input placeholder='Contraseña' type={passwordType} onChange={handleInputChangePassword} className='input'/>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width={16}
+                            height={16}
+                            fill="currentColor"
+                            className={`bi bi-eye-fill ${whatchClass}`}
+                            onClick={() => onClickPassword(setWhatch)}
+                        >
+                            <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+                            <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+                        </svg>
+                    </div>
+            </div>
 
                 <button className='login-button' onClick={handleInputSubmit}>Entrar</button>
             </form>
@@ -80,8 +110,5 @@ function LoginForm(){
 
     )
 }
-
-           
-// <a href='/register' className='login-button-register'>Crear cuenta</a>
 
 export { LoginForm }

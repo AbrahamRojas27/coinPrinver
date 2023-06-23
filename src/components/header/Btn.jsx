@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { setOpenModal } from '../../actions';
+import { setOpenModal } from '../../redux/uiSlice';
 
 function Btn() {
   const navigate = useNavigate()

@@ -2,15 +2,14 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { NewsContainer } from '../containers/NewsContainers';
 import { UserPanelNews } from '../containers/UserPanelNews';
 import  MobileMenu  from '../containers/MobileMenu';
-import { useSelector, useDispatch } from 'react-redux';
-import { setLoading } from '../actions';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import SearchIcon from '../components/SearchIcon';
-import getAPI from '../api'
-
-const api = 'https://coinpinver.com/Subastaexchange/api/getNoticiaNewStructure'
+import { fetchNews } from '../redux/newsSlice';
 
 function News(){
-    const loading = useSelector(state => state.loading)
+    const newsData = useSelector(state => state.news.news, shallowEqual)
+    const loading = useSelector(state => state.ui.loading)
+    const dispatch = useDispatch()
 
     const [cripto, setCripto] = useState(false)
     const [stock,  setStock] = useState(false)
@@ -18,12 +17,9 @@ function News(){
     const [search, setSearch] = useState("")
     const searchLower = search.toLowerCase()
 
-    const [fetchNews, setFetchNews] = useState([]) 
-    const dispatch = useDispatch()
-
     const searchedNews =  useMemo(() => 
-        fetchNews.filter(news => news.nne_titulo.toLowerCase().includes(searchLower)),
-    [fetchNews, search])
+        newsData ? newsData.filter(news => news.nne_titulo.toLowerCase().includes(searchLower)) : [],
+    [search, newsData])
 
     const searchNews = useRef(null)
     const searchNewsMobile = useRef(null)
@@ -39,13 +35,7 @@ function News(){
     
 
     useEffect(() =>{
-            const fetchNews = async () =>{
-                dispatch(setLoading(true))
-                const news = await getAPI(api)
-                setFetchNews(news.data)
-                dispatch(setLoading(false))
-            }
-            fetchNews()
+            dispatch(fetchNews())
     
         }, [])
 
@@ -88,8 +78,8 @@ function News(){
                         handleCripto = {handleCripto}
                     />
                     <NewsContainer
-                        loading = {loading}
                         news = {news}
+                        loading = {loading}
                     /> 
                 </section>
             </div>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { CoinPriceCard } from '../components/coinPrice/CoinPriceCard';
-import fetchApi from '../api';
+import {fetchApi} from '../api';
 
 const api = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=1&sparkline=false';
 

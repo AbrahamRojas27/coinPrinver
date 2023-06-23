@@ -4,7 +4,7 @@ import { Navigation, Pagination, Scrollbar } from 'swiper';
 import 'swiper/css';
 import "swiper/css/pagination";
 import { NewsCard } from '../components/news/NewsCard'
-import getAPI from '../api'
+import {fetchApi} from '../api'
 import { useLazyLoad } from "../hooks/useLazy";
 
 const items = [] 
@@ -14,7 +14,7 @@ function NewsPreview(){
 
     useEffect(() =>{
         const fetchNews = async () =>{
-            const news = await getAPI(api);
+            const news = await fetchApi(api);
             setNews(news.data)
         }
 
