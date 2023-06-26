@@ -24,6 +24,7 @@ function Home(){
                 <Suspense fallback={null}>
                     <MobileMenu/>
                     <Hero />
+                    <CoinPrice/>
                     <AboutUs />
                     <Memberships/>
                     <OurCoin/>

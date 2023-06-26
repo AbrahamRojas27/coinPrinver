@@ -6,18 +6,19 @@ import { setError } from '../../redux/uiSlice';
 
 function RegisterForm(){
     const navigate = useNavigate();
-    const error = useSelector(state => state.error)
+    const error = useSelector(state => state.ui.error)
     const dispatch = useDispatch()
 
     const login = async () =>{
-        await axios.post(USER_API, {
+        await axios.post('https://www.coinpinver.com/coinpinverapi/api/login', {
             username: email,
             password: password
         })
         .then((res) => {
             if(res.data.message === 'Correcto'){
                 localStorage.setItem('user', res.data.data.jwt)
-                //navigate('/')
+                navigate('/')
+                console.log(res)
                 dispatch(setError(false))
             } else{
                 dispatch(setError(true))
@@ -77,11 +78,10 @@ function RegisterForm(){
                  'password': password,
                  'phone': phoneNumber,
                })
-               .then(async (res) => console.log(res))
-               .catch((error) => {
-                 dispatch(setError(true))
-               });
-         } else{
+               .then((res) => login())
+               .catch((error) => dispatch(setError(true)));
+         } 
+         else{
              dispatch(setError(true))
          }
      }

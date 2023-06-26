@@ -10,10 +10,10 @@ import { setOpenModal } from '../redux/uiSlice'
 function MobileMenu(){
   let user = useSelector(state => state.user.user)
 
-  const openModal = useSelector(state => state.openModal)
+  const openModal = useSelector(state => state.ui.openModal)
   const navigate = useNavigate()
   const toRegister = () => {
-    //navigate('/login')
+    navigate('/login')
     dispatch(setOpenModal(false))
   }
   const dispatch = useDispatch()
