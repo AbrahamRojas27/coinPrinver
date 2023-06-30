@@ -1,8 +1,9 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     loading: false,
     error: false,
+    errorMsj: '',
     openModal: false,
 }
 
@@ -22,10 +23,13 @@ export const uiSlice = createSlice({
 
         setOpenModal: (state, action) => {
             state.openModal = action.payload
+        },
+        setErrorMsj: (state, action)=>{
+            state.errorMsj = action.payload
         }
     }
 })
 
-export const {setError, setLoading, setOpenModal} = uiSlice.actions
+export const {setError, setLoading, setOpenModal, setErrorMsj} = uiSlice.actions
 
 export default uiSlice.reducer

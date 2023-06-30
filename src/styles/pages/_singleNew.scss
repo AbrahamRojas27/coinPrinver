@@ -42,7 +42,7 @@
 }
 
 .single-new-free-content{
-    width: 98%;
+    width: 85%;
     margin: 20px auto;
     padding: 20px;
     border-radius: 20px;
@@ -57,7 +57,7 @@
 }
 
 .single-new-premium-content{
-    width: 98%;
+    width: 85%;
     margin: 20px auto;
     padding: 20px;
     border-radius: 20px;
@@ -65,4 +65,13 @@
     color: c.$dark;
     font-family: Arial, Helvetica, sans-serif;
     
+}
+
+@media(max-width: 640px){
+    .single-new-free-content{
+        width: 98%;
+    }
+    .single-new-premium-content{
+        width: 98%;
+    }
 }

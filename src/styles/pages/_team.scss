@@ -1,0 +1,134 @@
+@use '../global' as c;
+
+.team{
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+.vision-mision{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 40px 24px;
+}
+
+.mision-vision-img{
+    width: 60%;
+    margin: 0 auto;
+    img{
+        width: 100%;
+    }
+}
+
+.vision-mision-info{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+    p{
+        color: white;
+    }
+}
+
+.v-s-title{
+    font-size: 24px;
+    color: c.$primary;
+}
+
+.team-title{
+    font-size: 24px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: c.$primary;
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.team-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    padding: 20px 40px;
+}
+
+.team-card{
+    background-color: c.$soft-dark;
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0px 6px 6px -3px rgba(196,196,196,0.75);
+-webkit-box-shadow: 0px 6px 6px -3px rgba(196,196,196,0.75);
+-moz-box-shadow: 0px 6px 6px -3px rgba(196,196,196,0.75);
+}
+
+.team-img{
+    display: flex;
+    align-items: center;
+    border-radius: 100%;
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 8px;
+    overflow: hidden;
+    z-index: 100;
+    img{
+        width: 100%;
+        object-fit: contain;
+        z-index: 1000;
+    }
+}
+
+.team-info{
+    display: flex;
+    flex-direction: column;
+    background-color: c.$input;
+    padding: 0 40px 0 80px;
+    min-height: 180px;
+    justify-content: center;
+    text-align: end;
+    font-family: Arial, Helvetica, sans-serif;
+    clip-path: polygon(34% 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+.team-name{
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.team-position{
+    font-size: 12px;
+    margin-bottom: 12px;
+}
+
+.team-linkedin{
+    position: absolute;
+    top: 56%;
+    left: 30px;
+    cursor: pointer;
+}
+
+.linkeding-icon{
+    fill: c.$primary;
+    scale: 3;
+}
+
+@media(max-width: 768px){
+    .team-container{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media(max-width: 640px){
+    .team-container{
+        grid-template-columns: 1fr;
+        padding: 8px;
+    }
+    .vision-mision{
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    .mision-vision-img{
+        width: 80%;
+    }
+}

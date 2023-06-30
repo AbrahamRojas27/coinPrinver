@@ -28,7 +28,7 @@
 .membership{
     display: grid;
     justify-items: center;
-    min-width: 320px;
+    min-width: 100px;
     max-width: 380px;
     min-height: 500px;
     padding: 40px 20px;
@@ -75,7 +75,7 @@
 }
 
 .membership-oro{
-    min-width: 320px;
+    min-width: 100px;
     min-height: 110%;
     display: grid;
     justify-items: center;
@@ -97,6 +97,7 @@
     text-align: center;
     color: c.$dark;
     margin-bottom: 16px;
+    text-align: center;
 }
 
 .membership-list{
@@ -161,6 +162,7 @@
     color: c.$dark;
     display: flex;
     align-items: center;
+    text-align: center;
 }
 
 @media (max-width: 640px){

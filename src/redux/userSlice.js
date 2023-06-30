@@ -1,5 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
-import { getUser } from "../api"
+import { getUser, userLogin } from "../api"
+import { setError, setErrorMsj, setLoading } from "./uiSlice"
+
 
 const initialState = {
     user: null
@@ -14,6 +16,26 @@ export const userData = createAsyncThunk(
             dispatch(enterUser(user))
         }
     }
+)
+
+export const submitLogin = createAsyncThunk(
+    'user/submitLogin',
+    async ({userEmail, userPassword, navigate}, {dispatch}) =>{
+        dispatch(setLoading(true))
+        const res =  await userLogin(userEmail, userPassword)
+        if(res.data.message === 'Correcto'){
+            localStorage.setItem('user', res.data.data.jwt)
+            dispatch(userData())
+            dispatch(setError(false))
+            dispatch(setLoading(false))
+            navigate('/')
+        }else{
+            dispatch(setError(true))
+            dispatch(setLoading(false))
+            dispatch(setErrorMsj(res.data.msj))
+        }
+    }
+
 )
 
 export const userSlice = createSlice({

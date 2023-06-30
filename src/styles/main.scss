@@ -8,6 +8,7 @@
 @forward './pages/login';
 @forward './pages/register';
 @forward './pages/singleNew';
+@forward './pages/team';
 
 
 
@@ -24,3 +25,4 @@
 @forward './containers/newsPreview';
 @forward './containers/mobileMenu';
 @forward './containers/loadingSkeleton';
+

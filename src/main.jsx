@@ -12,8 +12,10 @@ import NotFound from './pages/NotFound.jsx';
 import './styles/main.scss'
 import { Provider } from 'react-redux';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { QueryClient, QueryClientProvider} from 'react-query'
 import { loader } from './pages/SingleNew.jsx';
 import store from './redux/store.js'
+import Team from './pages/Team.jsx';
 
 
 const router = createBrowserRouter([
@@ -50,16 +52,23 @@ const router = createBrowserRouter([
       {
         path: 'register',
         element: <Register/>
+      },
+      {
+        path: 'team',
+        element: <Team/>
       }
     ]
   }
 ])
 
+const queryClient = new QueryClient()
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    <QueryClientProvider client={queryClient}>
       <Provider store={store}>
         <RouterProvider router={router} />
       </Provider>
+    </QueryClientProvider>
   </React.StrictMode>
 )

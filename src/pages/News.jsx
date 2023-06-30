@@ -5,6 +5,7 @@ import  MobileMenu  from '../containers/MobileMenu';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import SearchIcon from '../components/SearchIcon';
 import { fetchNews } from '../redux/newsSlice';
+import LoginButton from '../components/LoginButton';
 
 function News(){
     const newsData = useSelector(state => state.news.news, shallowEqual)
@@ -81,6 +82,7 @@ function News(){
                         news = {news}
                         loading = {loading}
                     /> 
+                    <LoginButton/>
                 </section>
             </div>
     )

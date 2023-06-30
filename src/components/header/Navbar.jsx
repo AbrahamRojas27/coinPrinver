@@ -4,11 +4,15 @@ import { NavLink } from 'react-router-dom'
 const routes = [
     {
       to: '/',
-      text: 'Home'
+      text: 'Inicio'
     },
     {
       to: '/news',
-      text: 'News'
+      text: 'Noticias'
+    },
+    {
+      to: '/team',
+      text: 'Equipo'
     }
   ]
 

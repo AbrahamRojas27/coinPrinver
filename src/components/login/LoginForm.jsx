@@ -3,15 +3,14 @@ import { useState } from 'react';
 import { LoginFormImg } from './LoginFormImg';
 import {  useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { setError } from '../../redux/uiSlice';
-import axios from 'axios';
-import { userData } from '../../redux/userSlice';
+import { submitLogin } from '../../redux/userSlice';
+import LoaderSpinner from '../LoaderSpinner';
 
 
 function LoginForm(){
-    const USER_API = 'https://www.coinpinver.com/coinpinverapi/api/login'
-
+    const isLoading = useSelector(state =>state.ui.loading)
     const error = useSelector(state => state.ui.error)
+    const errorMsj = useSelector( state => state.ui.errorMsj)
     const dispatch = useDispatch()
 
     const [whatch, setWhatch] = useState(false)
@@ -31,23 +30,7 @@ function LoginForm(){
 
     const handleInputSubmit = async (e) =>{
         e.preventDefault();
-        await axios.post(USER_API, {
-            username: userEmail,
-            password: userPassword
-        })
-        .then((res) => {
-            if(res.data.message === 'Correcto'){
-                localStorage.setItem('user', res.data.data.jwt)
-                navigate('/')
-                dispatch(setError(false))
-            }else{
-                dispatch(setError(true))
-            }
-            
-        })
-        .catch((err) => console.log(err))
-
-        
+        dispatch(submitLogin({userEmail, userPassword, navigate}))
     }
 
     const whatchClass = whatch ? 'whatch--active' : 'whatch'
@@ -70,11 +53,13 @@ function LoginForm(){
             {
                 error
                     ?   <article className='form-error-text-container'>
-                            <p className='error-text'>Usuario o contraseña invalidos.</p>
+                            <p className='error-text'>{errorMsj}</p>
                         </article>
                         
                     : <div className='hidden'></div>
             }
+
+            {isLoading && <LoaderSpinner/>}
 
             <form onSubmit={handleInputSubmit} className='login-form'>
                 <div className='login-input-container'>

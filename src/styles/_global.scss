@@ -24,6 +24,42 @@ body{
     background-color: $dark;
 }
 
+.loader-spinner{
+    width: 32px;
+    height: 32px;
+    margin: 16 auto;
+    border: 2px solid $white;
+    border-left: none;
+    border-bottom: none;
+    border-radius: 100%;
+    animation: rotate 1s linear infinite;
+}
+
+.login-button-icon{
+    fill: $dark;
+    scale: 4;
+}
+
+.login-button-fix{
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    bottom: 60px;
+    right: 10px;
+    background-color: $white;
+    border-radius: 100%;
+    padding: none;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0px 1px 12px -3px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 1px 12px -3px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 1px 12px -3px rgba(0,0,0,0.75);
+}
+
 @mixin button{
     padding: 8px 20px;
     background-color: $primary;
@@ -58,6 +94,14 @@ body{
     display: none;
 }
 
+@keyframes rotate{
+    from{
+        rotate: 0deg;
+    }
+    to{
+        rotate: 360deg;
+    }
+}
 @keyframes opacity{
     from{
         opacity: 0%;
@@ -108,5 +152,17 @@ body{
     to{
         opacity: 100%;
         transform: translateY(0px);
+    }
+}
+
+@media(max-width: 668px){
+    .login-button-fix{
+        width: 60px;
+        height: 60px;
+        bottom: 40px;
+    }
+
+    .login-button-icon{
+        scale: 2;
     }
 }
