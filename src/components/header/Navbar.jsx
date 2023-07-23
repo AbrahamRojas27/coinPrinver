@@ -37,7 +37,7 @@ function Navbar(props){
                 <a href="https://coinpinver.com/Subastaexchange/noticias" className="nav-item">Señales</a>
               </li>
               <li>
-                <a href="https://tokencpge.coinpinver.com/" className="token-button">Compra nuestro CPGE</a>
+                <a href="https://tokencpge.coinpinver.com/" className="token-button">Compra CPGE</a>
               </li>
             </ul>
        </nav>
