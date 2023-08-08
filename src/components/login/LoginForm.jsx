@@ -13,6 +13,8 @@ function LoginForm(){
     const errorMsj = useSelector( state => state.ui.errorMsj)
     const dispatch = useDispatch()
 
+    console.log(isLoading)
+
     const [whatch, setWhatch] = useState(false)
 
     const navigate = useNavigate()

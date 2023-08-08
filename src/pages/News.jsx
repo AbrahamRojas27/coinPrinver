@@ -4,12 +4,15 @@ import { UserPanelNews } from '../containers/UserPanelNews';
 import  MobileMenu  from '../containers/MobileMenu';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import SearchIcon from '../components/SearchIcon';
-import { fetchNews } from '../redux/newsSlice';
+import { setNews } from '../redux/newsSlice';
 import LoginButton from '../components/LoginButton';
+import { useQuery } from 'react-query';
+import { fetchApi } from '../api';
+import LoaderGif from '../components/LoaderGif';
 
 function News(){
     const newsData = useSelector(state => state.news.news, shallowEqual)
-    const loading = useSelector(state => state.ui.loading)
+    const isLoading = useSelector(state =>state.ui.loading)
     const dispatch = useDispatch()
 
     const [cripto, setCripto] = useState(false)
@@ -19,7 +22,7 @@ function News(){
     const searchLower = search.toLowerCase()
 
     const searchedNews =  useMemo(() => 
-        newsData ? newsData.filter(news => news.nne_titulo.toLowerCase().includes(searchLower)) : [],
+        newsData ? newsData.data.filter(news => news.nne_titulo.toLowerCase().includes(searchLower)) : [],
     [search, newsData])
 
     const searchNews = useRef(null)
@@ -34,11 +37,11 @@ function News(){
 
     const news = cripto ? newsCripto : stock ? newsStock : searchedNews
     
+    const { data, error, isLoading: loading} = useQuery('newsData', () =>(fetchApi('https://coinpinver.com/Subastaexchange/api/getNoticiaNewStructure')))
 
     useEffect(() =>{
-            dispatch(fetchNews())
-    
-        }, [])
+        dispatch(setNews(data))
+    }, [data])
 
     const stockClass = stock ? 'filter-button--active' : 'filter-button'
     const criptoClass = cripto ? 'filter-button--active' : 'filter-button'
@@ -50,6 +53,8 @@ function News(){
         setStock(!stock)
     }
 
+    isLoading && <LoaderGif/>
+    
     return(
             <div className='news'>
                 <div className='search-news-mobile'>

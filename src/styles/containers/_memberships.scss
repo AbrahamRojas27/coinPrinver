@@ -7,6 +7,7 @@
     margin: 72px 0;
     padding: 0 16px;
     min-height: 500px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .memberships-title{
@@ -14,7 +15,23 @@
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
     color: c.$white;
-    margin: 0 0 128px 0;
+    margin-bottom: 8px;
+}
+
+.membership-subtitle{
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    margin: 0 100px 12px;
+}
+
+.membership-info{
+    text-align: center;
+    font-size: 16px;
+    color: white;
+    margin: 0 100px 128px;
+    line-height: 20px;
 }
 
 .memberships-container{
@@ -137,6 +154,7 @@
 
 .membership-img-bronce{
     width: 140px;
+    height: 100px;
     margin: -100px auto 0;
 }
 
@@ -147,7 +165,7 @@
 
 .membership-img-oro{
     width: 160px;
-    margin: -100px auto 0;
+    margin: -100px auto 10px;
 }
 
 .membership-img{
@@ -201,7 +219,16 @@
 
     .memberships-title{
         text-align: center;
-        margin: 0 0 80px;
+        margin:0; 
+    }
+
+    .membership-info{
+        margin: 0;
+        margin-bottom: 120px;
+    }
+    .membership-subtitle{
+        margin: 0;
+        margin-bottom: 8px;
     }
 }
 
@@ -246,6 +273,6 @@
 
     .memberships-title{
         text-align: center;
-        margin: 0 0 80px;
+        margin: 0 0 8px;
     }
 }

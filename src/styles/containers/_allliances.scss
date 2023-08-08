@@ -1,0 +1,89 @@
+@use '../global' as c;
+
+.alliances{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+    padding: 72px 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.alliance-info-img-container{
+    width: 100%;
+    background-color: c.$soft-dark;
+    padding: 40px;
+    -webkit-clip-path: polygon(0 0, 80% 0%, 100% 100%, 0% 100%);
+    clip-path: polygon(0 0, 80% 0%, 100% 100%, 0% 100%);
+}
+
+.alliance-info-img{
+    margin: 0 auto;
+    width: 50%;
+    img{
+        width: 100%;
+    }
+}
+
+.alliances-title{
+    text-align: center;
+    font-size: 24px;
+    color: c.$primary;
+    font-weight: bold;
+}
+
+.alliances-container{
+    padding: 20px 0;
+}
+
+.alliance-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.alliances-list{
+    padding: 20px 8px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.alliance-img{
+    width: 40%;
+    img{
+        width: 100%;
+    }
+}
+
+.alliance-name{
+    text-align: center;
+}
+
+.alliance-info{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 0 80px;
+    color: white;
+}
+
+.alliance-title{
+    font-size: 32px;
+}
+
+@media(max-width: 640px){
+    .alliances{
+        grid-template-columns: none;
+    }
+    .alliance-info-img-container{
+        -webkit-clip-path: none
+    }
+    .alliance-info{
+        padding: 20px 8px;
+        text-align: center;
+    }
+    .alliance-info-img{
+        width: 80%;
+    }
+}

@@ -1,10 +1,17 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { setLoading } from '../../redux/uiSlice'
 
 function NewsCard(props){
+    const dispatch = useDispatch()
+    const toSingle = () =>{
+        dispatch(setLoading(true))
+    }
     const description = props.description ? 'new-card-description' : 'hidden'
+    
     return(
-       <Link className='new-card-container' to={props.slug}>
+       <Link className='new-card-container' to={props.slug} onClick={toSingle}>
             <div className='new-card'>
                 <figure className='new-card-img-figure'>
                     <img src={props.img} alt={props.title} className='new-card-img'/>

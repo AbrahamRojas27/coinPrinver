@@ -10,7 +10,7 @@ export const fetchNews = createAsyncThunk(
     'news/fetchNews',
     async (_, {dispatch}) =>{
         dispatch(setLoading(true))
-        const news = await fetchApi('https://coinpinver.com/Subastaexchange/api/getNoticiaNewStructure')
+        const news = await fetchApi()
         dispatch(setNews(news.data))
         dispatch(setLoading(false))
     }

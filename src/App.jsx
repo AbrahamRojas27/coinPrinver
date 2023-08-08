@@ -15,7 +15,6 @@ function App() {
     }
   }, [user])
  
-
   return (
     <>
       <Header/>

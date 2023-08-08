@@ -4,6 +4,8 @@ import { SingleNewInfo } from '../components/news/SingleNewInfo';
 import MobileMenu from '../containers/MobileMenu';
 import {fetchApi} from '../api';
 import LoginButton from '../components/LoginButton';
+import { useDispatch, useSelector } from 'react-redux';
+import { setLoading } from '../redux/uiSlice';
 
 const SINGLE_NEW = 'https://coinpinver.com/Subastaexchange/api/noticia/'
 
@@ -16,6 +18,9 @@ const loader = async ({params}) => {
 
 function SingleNew(){
     const { singleNew } = useLoaderData()
+    const dispatch = useDispatch()
+
+    dispatch(setLoading(false))
     
     return(
         <>

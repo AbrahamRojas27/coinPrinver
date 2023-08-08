@@ -6,20 +6,14 @@ import "swiper/css/pagination";
 import { NewsCard } from '../components/news/NewsCard'
 import {fetchApi} from '../api'
 import { useLazyLoad } from "../hooks/useLazy";
+import { useQueries, useQuery } from "react-query";
+import LoaderSpinner from "../components/LoaderSpinner";
 
 const items = [] 
 function NewsPreview(){
-    const [news, setNews] = useState([]);
     const api = 'https://coinpinver.com/Subastaexchange/api/noticiasDestacadas'
 
-    useEffect(() =>{
-        const fetchNews = async () =>{
-            const news = await fetchApi(api);
-            setNews(news.data)
-        }
-
-        fetchNews()
-    }, [])
+    const {data, isLoading, error} = useQuery('newsPreview', () =>(fetchApi(api)))
 
     const element = useRef()
     const isIntersecting = useLazyLoad(element)
@@ -27,8 +21,7 @@ function NewsPreview(){
         <section ref={element} className="news-preview">
             {isIntersecting && (
                 <>
-                    <h3 className='news-preview-title'>INFÓRMATE PARA TOMAR BUENAS DECISIONES EN TUS INVERSIONES</h3>
-                    
+                    <h3 className='news-preview-title'>INFÓRMATE PARA TOMAR BUENAS DECISIONES EN TUS INVERSIONES</h3>                    
                     <Swiper
                     loop= {true}
                     pagination={{
@@ -57,22 +50,24 @@ function NewsPreview(){
                     className="mySwiper"
                     > 
                     {
-                    news.map(item => (
-                        <SwiperSlide                                 
-                            key={item.nne_id}
-                        >
-                            <NewsCard 
-                                title={item.nne_titulo}
-                                description= {item.nne_descripcion}
-                                img={item.nne_imagenPreview}
-                                author={item.Nombre}
-                                content={item.nne_contenido}
-                                date={item.nne_fechaPublicacion}
-                                slug={`news/${item.nne_id}`}
-                            />
-                        </SwiperSlide>
-
-                        ))
+                        isLoading 
+                            ? <LoaderSpinner/>
+                            : data.data.map(item => (
+                                    <SwiperSlide                                 
+                                        key={item.nne_id}
+                                    >
+                                        <NewsCard 
+                                            title={item.nne_titulo}
+                                            description= {item.nne_descripcion}
+                                            img={item.nne_imagenPreview}
+                                            author={item.Nombre}
+                                            content={item.nne_contenido}
+                                            date={item.nne_fechaPublicacion}
+                                            slug={`news/${item.nne_id}`}
+                                        />
+                                    </SwiperSlide>
+        
+                                ))
                     }
 
                     <button className="swiper-button-next">

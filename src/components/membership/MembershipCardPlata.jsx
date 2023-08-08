@@ -24,7 +24,7 @@ function MembershipPlata({info}){
                     </ul>
 
                     <div>
-                        <a href='https://buy.stripe.com/28o8yZ7r10UV35K28fs'  className='button'>Adquiere esta membresía 26.85/US$</a>
+                        <a href='https://buy.stripe.com/fZeaH726H1YZ6hW9AI'  className='button'>Adquiere esta membresía 26.85/US$</a>
                     </div>
 
                 </div>

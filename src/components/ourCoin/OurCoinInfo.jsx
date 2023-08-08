@@ -11,7 +11,7 @@ function OurCoinInfo(){
                     Whitepaper CPGE
                 </a>
                 <a href='https://tokencpge.coinpinver.com/' className='our-coin-button'>
-                    Compra nuestro CPGE
+                    Comprar CPGE
                 </a>
             </div>
         </article>

@@ -2,6 +2,7 @@ import React, { Suspense, lazy, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { userData } from "../redux/userSlice";
 import LoginButton from "../components/LoginButton";
+import Alliances from "../containers/Alliances";
 const OurCoin = lazy(() => import("../containers/OurCoin"))
 const NewsPreview = lazy(()=> import("../containers/NewsPreview"))
 const CoinPrice = lazy(() => import("../containers/CoinPrice"))
@@ -18,6 +19,7 @@ function Home(){
                 <Hero />
                 <CoinPrice/>
                 <AboutUs />
+                <Alliances />
                 <Memberships/>
                 <OurCoin/>
                 <NewsPreview/>
